@@ -52,7 +52,7 @@ int main(int argv, char** argc)
     try {
       commandsStorage.at(command)();
     } catch (const std::exception& ex) {
-      std::cout << "< INVALID COMMAND >" <<"\n";
+      std::cout << "<INVALID COMMAND>" <<"\n";
       std::cin.clear();
       std::cin.ignore(std::numeric_limits< std::streamsize >::max(), '\n');
     }
