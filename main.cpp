@@ -43,7 +43,20 @@ int main(int argv, char** argc)
     {"MAX", std::bind(&kuznetsov::Commands::getMax, std::ref(commands))},
     {"MIN", std::bind(&kuznetsov::Commands::getMin, std::ref(commands))},
     {"COUNT", std::bind(&kuznetsov::Commands::getCount, std::ref(commands))},
-    {"MAXSEQ", std::bind(&kuznetsov::Commands::getMaxSeq, std::ref(commands))}
+    {"MAXSEQ", std::bind(&kuznetsov::Commands::getMaxSeq, std::ref(commands))},
+    {"LESSAREA", std::bind(&kuznetsov::Commands::getLessArea, std::ref(commands))}
   };
+
+  std::string command;
+  while (std::cin >> command) {
+    try {
+      commandsStorage.at(command)();
+    } catch (const std::exception& ex) {
+      std::cout << "< INVALID COMMAND >" <<"\n";
+      std::cin.clear();
+      std::cin.ignore(std::numeric_limits< std::streamsize >::max(), '\n');
+    }
+  }
+  return 0;
 
 }
